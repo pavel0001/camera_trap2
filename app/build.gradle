@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+ext {
+    dagger_version = '2.17'
+}
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+    }
+    defaultConfig {
+        applicationId "com.example.cameratrapv2"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.10"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // Room components
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+// Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archLifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.archLifecycleVersion"
+
+// Kotlin components
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+
+// Material design
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+// Testing
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.0"
+
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.0"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:2.3.0"
+    //Material
+    api 'com.google.android.material:material:1.3.0-alpha02'
+    //Recycler
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //Map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    //Spinner
+    implementation 'com.jaredrummler:material-spinner:1.3.1'
+    //Dagger2
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    //Toast
+    implementation 'com.github.GrenderG:Toasty:1.5.0'
+}

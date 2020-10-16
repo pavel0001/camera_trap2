@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/photo_2020_10_02_12_58_47">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="109dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="290dp"
+            android:layout_height="match_parent"
+            android:alpha="0.9"
+            android:background="@drawable/demo_shape"
+            android:scaleX="2"
+            android:scaleY="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            android:text="@string/demo_number"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_battery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:drawableStart="@drawable/ic_battery"
+            android:gravity="center|right"
+            android:text="@string/demo_battery"
+            android:textColor="@color/secendTextColor"
+            app:layout_constraintEnd_toStartOf="@+id/item_signal"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/item_number" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_signal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_battery"
+            android:gravity="center|right"
+            android:text="@string/demo_battery"
+            android:textColor="@color/secendTextColor"
+            app:drawableStartCompat="@drawable/ic_signal"
+            app:layout_constraintBottom_toBottomOf="@+id/item_battery"
+            app:layout_constraintEnd_toStartOf="@+id/item_storage"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_battery" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_storage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_battery"
+            android:gravity="center|right"
+            android:text="@string/demo_battery"
+            android:textColor="@color/secendTextColor"
+            app:drawableStartCompat="@drawable/ic_storage"
+            app:layout_constraintBottom_toBottomOf="@+id/item_battery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_signal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_images"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:drawableStart="@drawable/ic_images"
+            android:gravity="center|right"
+            android:text="@string/demo_images"
+            android:textColor="@color/secendTextColor"
+            app:layout_constraintEnd_toEndOf="@id/item_battery"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/item_battery" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_last_photo"
+            android:textColor="@color/secendTextColor"
+            app:layout_constraintBottom_toTopOf="@id/materialTextView"
+            app:layout_constraintEnd_toStartOf="@id/item_last_photo"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/item_images" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_last_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/demo_date"
+            android:textColor="@color/primaryDarkColor"
+            app:layout_constraintBottom_toBottomOf="@id/materialTextView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/materialTextView4" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/demo_update"
+            android:textColor="@color/secendTextColor"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/item_last_update"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/guideline" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_last_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/demo_date"
+            android:textColor="@color/primaryDarkColor"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/materialTextView" />
+
+        <ImageButton
+            android:id="@+id/item_refreah"
+            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_refresh"
+            android:tint="@color/iconColor"
+            android:scaleType="center"
+            android:scaleX="1.4"
+            android:scaleY="1.4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintStart_toEndOf="@+id/item_last_update"
+            app:layout_constraintTop_toBottomOf="@+id/item_last_photo" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

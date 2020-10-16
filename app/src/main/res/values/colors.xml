@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#55DA03</color>
+
+    <color name="primaryColor">#031516</color>
+    <color name="primaryLightColor">#2c3b3c</color>
+    <color name="primaryLightLightColor">#57787A</color>
+    <color name="primaryDarkColor">#0C1010</color>
+    <color name="primaryTextColor">#e2ab00</color>
+    <color name="primaryBorderColor">#5BE2AB00</color>
+
+    <color name="primaryColorOn">#E1C778</color>
+    <color name="primaryColorOff">#4A4229</color>
+
+
+    <color name="iconColor">#2B3C3E</color>
+    <color name="iconColorRed">#422C2C</color>
+
+    <color name="lightBack">#6B9295</color>
+
+
+    <color name="secendTextColor">#E1C778</color>
+    <color name="colorPrimaryActionButtonBack">#E1C778</color>
+
+    <!-- #################################TOAST######################################### -->
+    <color name="toast_color_cancelled">#7A7A78</color>
+    <color name="toast_color_succes">#A2D86C</color>
+    <color name="toast_color_error">#DD6F6F</color>
+    <color name="toast_color_info">#6BA2D8</color>
+
+
+</resources>

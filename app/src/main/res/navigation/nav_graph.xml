@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.cameratrapv2.screens.MainFragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_cameraAddFragment"
+            app:destination="@id/cameraAddFragment"
+            app:enterAnim="@android:anim/accelerate_interpolator"
+            app:exitAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_mainFragment_to_cameraIndFragment"
+            app:destination="@id/cameraIndFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <dialog
+        android:id="@+id/cameraAddFragment"
+        android:name="com.example.cameratrapv2.screens.CameraAddFragment.CameraAddFragment"
+        android:label="fragment_camera_add"
+        tools:layout="@layout/fragment_camera_add" >
+        <action
+            android:id="@+id/action_cameraAddFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_in_left" />
+    </dialog>
+    <fragment
+        android:id="@+id/getPosFragment"
+        android:name="com.example.cameratrapv2.screens.GetPosFragment.GetPosFragment"
+        android:label="fragment_get_pos"
+        tools:layout="@layout/fragment_get_pos" />
+    <fragment
+        android:id="@+id/cameraIndFragment"
+        android:name="com.example.cameratrapv2.screens.CameraIndFragment.CameraIndFragment"
+        android:label="fragment_camera_ind"
+        tools:layout="@layout/fragment_camera_ind" >
+        <action
+            android:id="@+id/action_cameraIndFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_cameraIndFragment_to_getPosFragment"
+            app:destination="@id/getPosFragment" />
+
+    </fragment>
+</navigation>
