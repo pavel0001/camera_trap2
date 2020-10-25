@@ -31,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
         <HorizontalScrollView
+            android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,14 +86,14 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_GPS"
+            android:id="@+id/button_gps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="@color/primaryLightLightColor"
             android:drawableBottom="@drawable/ic_gps"
             android:drawableTint="@color/primaryColorOn"
-            android:text="@string/button_get_photo"
+            android:text="@string/button_show_map"
             android:textColor="@color/primaryColorOn"
             android:textSize="@dimen/text_size_ind_card"
             app:layout_constraintStart_toEndOf="@id/button_add_contact"
@@ -103,16 +104,16 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="@color/primaryLightLightColor"
-            android:drawableBottom="@drawable/ic_gps"
+            android:drawableBottom="@drawable/ic_progr"
             android:drawableTint="@color/primaryColorOn"
             android:text="@string/button_progr_first"
             android:textColor="@color/primaryColorOn"
             android:textSize="@dimen/text_size_ind_card"
-            app:layout_constraintStart_toEndOf="@id/button_GPS"
+            app:layout_constraintStart_toEndOf="@id/button_gps"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_any"
+            android:id="@+id/button_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
@@ -137,7 +138,7 @@
             android:textColor="@color/primaryColorOn"
             android:textSize="@dimen/text_size_ind_card"
             app:layout_constraintTop_toBottomOf="@id/button_pir"
-            app:layout_constraintStart_toEndOf="@id/button_any"/>
+            app:layout_constraintStart_toEndOf="@id/button_delete"/>
 
 
         <com.google.android.material.button.MaterialButton
@@ -173,7 +174,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="@color/primaryLightLightColor"
-            android:drawableBottom="@drawable/ic_sms"
+            android:drawableBottom="@drawable/ic_progr"
             android:drawableTint="@color/primaryColorOn"
             android:text="@string/button_progr_secend"
             android:textColor="@color/primaryColorOn"
@@ -183,5 +184,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </HorizontalScrollView>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/scroll_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/logs_view"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_map"
+        android:orderInCategory="200"
+        android:title="Map"
+        android:icon="@drawable/ic_map"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_cmd"
+        android:orderInCategory="200"
+        android:title="Command"
+        android:icon="@drawable/ic_cmd"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="200"
+        android:title="About"
+        android:icon="@drawable/ic_about"
+        app:showAsAction="ifRoom"/>
+</menu>

@@ -29,8 +29,7 @@
         <action
             android:id="@+id/action_cameraAddFragment_to_mainFragment"
             app:destination="@id/mainFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_in_left" />
+            app:exitAnim="@android:anim/fade_out" />
     </dialog>
     <fragment
         android:id="@+id/getPosFragment"

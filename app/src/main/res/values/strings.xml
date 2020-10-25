@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CameraTrapv2</string>
+    <string name="app_name">Camera trap</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="shr_hint_username">login</string>
@@ -12,20 +12,36 @@
     <string name="demo_last_photo">Last photo take:</string>
     <string name="text_title_add_dialog">Add new camera</string>
     <string name="hint_add_number">Enter camera\'s number</string>
-    <string name="button_sms_off">SMS</string>
+    <string name="hint_add_contact">Enter phone number</string>
+
+
+
     <string name="button_pir_off">PIR</string>
-    <string name="button_contact_add">Add</string>
-    <string name="button_get_photo">GET</string>
-    <string name="button_set_date">SET</string>
     <string name="button_logs_show">LOGS</string>
     <string name="button_delete">DLT</string>
+    <string name="button_contact_add">Add</string>
+    <string name="button_set_date">SET</string>
+    <string name="button_sms_off">SMS</string>
+    <string name="button_get_photo">GET</string>
+    <string name="button_show_map">MAP</string>
     <string name="button_progr_secend">Any</string>
     <string name="button_progr_first">Any</string>
+
     <dimen name="text_size_ind_card">12sp</dimen>
+
     <!--Toast Strings -->
     <string name="toast_cancel">Cancel</string>
     <string name="toast_succes">Succes</string>
     <string name="toast_error">Error</string>
+    <string name="radio_group_add">add number</string>
+    <string name="radio_group_delete">delete number</string>
+    <string name="text_title_dialog_add_number">Add or Delete</string>
+    <string name="text_message_dialog_add_number">Enter phone number which will takes images and messages from photo trap.
+        You can delete this number, just choice delete button</string>
+    <string name="button_dialog_add_number_cancel">Cancel</string>
+    <string name="button_dialog_add_number_do">Do it</string>
+    <string name="text_message_dialog_send_sms">Will be send sms, it\'s can take some money</string>
+    <string name="text_title_dialog_send_sms">Send command</string>
 
 
 </resources>

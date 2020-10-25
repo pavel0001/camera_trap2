@@ -8,10 +8,11 @@ data class CommandData(
     @PrimaryKey
     val key: Int,
     val name: String,
-    val value: String
+    val valueOn: String,
+    val valueOff: String = "null"
     ) {
     override fun toString(): String {
-        return "CommandData(name='$name', value='$value', key=$key)"
+        return "CommandData(key=$key, name='$name', valueOn='$valueOn', valueOff='$valueOff')"
     }
 
 }

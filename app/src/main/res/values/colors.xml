@@ -8,7 +8,7 @@
     <color name="primaryLightColor">#2c3b3c</color>
     <color name="primaryLightLightColor">#57787A</color>
     <color name="primaryDarkColor">#0C1010</color>
-    <color name="primaryTextColor">#e2ab00</color>
+    <color name="primaryTextColor">#E1C778</color>
     <color name="primaryBorderColor">#5BE2AB00</color>
 
     <color name="primaryColorOn">#E1C778</color>
@@ -19,16 +19,18 @@
     <color name="iconColorRed">#422C2C</color>
 
     <color name="lightBack">#6B9295</color>
-
+    <color name="lightToolBar">#DC6B9295</color>
 
     <color name="secendTextColor">#E1C778</color>
     <color name="colorPrimaryActionButtonBack">#E1C778</color>
 
     <!-- #################################TOAST######################################### -->
     <color name="toast_color_cancelled">#7A7A78</color>
-    <color name="toast_color_succes">#A2D86C</color>
-    <color name="toast_color_error">#DD6F6F</color>
-    <color name="toast_color_info">#6BA2D8</color>
+    <color name="toast_color_succes">#7B956B</color>
+    <color name="toast_color_error">#956B6B</color>
+    <color name="toast_color_info">#6B9295</color>
+    <!-- Selected Recycler Item-->
+    <color name="selectedRecycler">#7CB342</color>
 
 
 </resources>

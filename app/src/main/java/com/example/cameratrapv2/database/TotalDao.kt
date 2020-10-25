@@ -42,6 +42,9 @@ interface TotalDao {
     @Query("SELECT * from camera_data")
     fun getCameraData(): List<CameraData>
 
+    @Query("SELECT * from camera_data WHERE number == :number")
+    fun getCameraDataFromNumber(number: String): CameraData
+
     @Insert(entity = CameraData::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCameraData(camera: CameraData)
 
@@ -55,7 +58,13 @@ interface TotalDao {
     @Query("SELECT * from cmd_data")
     fun getCmd(): LiveData<List<CommandData>>
 
+    @Query("SELECT * from cmd_data")
+    fun getCmdList(): List<CommandData>
+
     @Update(entity = CommandData::class)
     suspend fun updateCmdData(cmd: CommandData)
+
+    @Insert(entity = CommandData::class)
+    suspend fun insertCmd(cmd: List<CommandData>)
 
 }

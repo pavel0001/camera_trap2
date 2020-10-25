@@ -39,12 +39,12 @@ class CameraAddFragment : DialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        val alertDialog =  MaterialAlertDialogBuilder(requireContext())
+        val alertDialog =  MaterialAlertDialogBuilder(requireContext(), R.style.ThemeOverlay_App_MaterialAlertDialog_info)
             .setTitle("Added number")
             .setMessage("You really wont added camera number from contacts?")
             .setNegativeButton("No") { dialog, which -> }
 
-        button_add.setOnClickListener {
+        button_add.setOnClickListener {                           //When user click ADD
             val number = editText.text.toString().let {
                 if( ! it.isNullOrEmpty()) {
                     viewModel.insert(CameraData(it)) // insert number in Room DB

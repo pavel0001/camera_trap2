@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
     android:layout_height="200dp"
     android:layout_margin="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/back_drawable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/photo_2020_10_02_12_58_47">
+        android:background="@drawable/photo_2020_10_02_12_58_47"
+        android:backgroundTintMode="multiply">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -38,7 +42,7 @@
             android:layout_marginTop="10dp"
             android:padding="5dp"
             android:text="@string/demo_number"
-            android:textColor="@color/primaryDarkColor"
+            android:textColor="@color/iconColor"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"

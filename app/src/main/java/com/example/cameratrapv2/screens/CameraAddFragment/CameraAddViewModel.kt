@@ -13,15 +13,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CameraAddViewModel(application: Application): AndroidViewModel(application) {
-    lateinit var repository: TotalRepository
+    val repository: TotalRepository = TotalRepository(TotalDatabase.getDatabase(application).dao())
     private lateinit var number_list: List<CameraData>
 
-
-
     init {
-
-        val cameraDao = TotalDatabase.getDatabase(application).dao()
-        repository = TotalRepository(cameraDao)
         viewModelScope.launch(Dispatchers.IO) {
             number_list = repository.getCameraNumbers()
         }

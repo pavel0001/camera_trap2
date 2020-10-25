@@ -12,19 +12,24 @@ import kotlinx.coroutines.launch
 
 class MainFragmentViewModel(application: Application): AndroidViewModel(application) {
 
-    lateinit var repository: TotalRepository
-    lateinit var allData: LiveData<List<CameraData>>
-
-
+    val repository: TotalRepository = TotalRepository(TotalDatabase.getDatabase(application).dao())
+    val allData: LiveData<List<CameraData>> = repository.getCameraDataAll()
+    private lateinit var number_list: List<CameraData>
 
     init {
-
-        val cameraDao = TotalDatabase.getDatabase(application).dao()
-        repository = TotalRepository(cameraDao)
-        allData = repository.getCameraDataAll()
+        viewModelScope.launch(Dispatchers.IO) {
+            number_list = repository.getCameraNumbers()
+        }
     }
+
     fun insert(data: CameraData) = viewModelScope.launch(Dispatchers.IO) {
         repository.insertCameraData(data)
+    }
+    fun delete(camera: CameraData)= viewModelScope.launch(Dispatchers.IO){
+        repository.deleteCamera(camera)
+    }
+    fun getCameraList(): MutableList<CameraData>{
+        return number_list.toMutableList()
     }
 
 }
