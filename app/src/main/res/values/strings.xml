@@ -9,7 +9,7 @@
     <string name="demo_images">124</string>
     <string name="demo_update">Last update:</string>
     <string name="demo_date">10 Sep 2020 y. 10:24:15</string>
-    <string name="demo_last_photo">Last photo take:</string>
+    <string name="demo_last_photo">Last photo:</string>
     <string name="text_title_add_dialog">Add new camera</string>
     <string name="hint_add_number">Enter camera\'s number</string>
     <string name="hint_add_contact">Enter phone number</string>

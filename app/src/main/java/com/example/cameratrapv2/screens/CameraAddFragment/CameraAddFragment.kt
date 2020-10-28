@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cameratrapv2.R
 import com.example.cameratrapv2.activity.MainActivity
 import com.example.cameratrapv2.models.CameraData
+import com.example.cameratrapv2.screens.MainFragment.MainFragmentViewModel
 import com.example.cameratrapv2.utils.MyToast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import es.dmoral.toasty.Toasty
@@ -25,12 +26,15 @@ import kotlinx.android.synthetic.main.fragment_camera_add.*
 class CameraAddFragment : DialogFragment() {
     val RESULT_OK = -1
     lateinit var viewModel: CameraAddViewModel
+    lateinit var mainFragmentViewModel: MainFragmentViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this).get(CameraAddViewModel::class.java)
+        mainFragmentViewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
 
 
         return inflater.inflate(R.layout.fragment_camera_add, null, false)
@@ -49,6 +53,7 @@ class CameraAddFragment : DialogFragment() {
                 if( ! it.isNullOrEmpty()) {
                     viewModel.insert(CameraData(it)) // insert number in Room DB
                     MyToast.succes(requireContext())//Toast
+                    mainFragmentViewModel.runLoaderMmsData()
                     (activity as MainActivity).navController.navigate(R.id.action_cameraAddFragment_to_mainFragment)
                 }
             }
@@ -93,5 +98,7 @@ class CameraAddFragment : DialogFragment() {
         }
 
     }
+
+
 }
 

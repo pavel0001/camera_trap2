@@ -14,6 +14,7 @@ data class CameraData(
     var longitude: Double = 0.0,
 var last_update: Long = 0L,
 var last_photo: Long = 0L,
+var last_photo_uri: String ="",
 var total_images: Int = 0,
 var pir_state: Boolean = true,
 var sms_state: Boolean = true) {

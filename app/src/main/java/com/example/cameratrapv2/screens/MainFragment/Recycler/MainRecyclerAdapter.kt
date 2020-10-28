@@ -2,17 +2,21 @@ package com.example.cameratrapv2.screens.MainFragment.Recycler
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.cameratrapv2.R
 import com.example.cameratrapv2.activity.MainActivity
 import com.example.cameratrapv2.models.CameraData
@@ -41,7 +45,7 @@ var elements: MutableList<CameraData>): RecyclerView.Adapter<MainRecyclerAdapter
         val last_photo = itemView.findViewById<TextView>(R.id.item_last_photo)
         val last_update = itemView.findViewById<TextView>(R.id.item_last_update)
         val refresh = itemView.findViewById<ImageButton>(R.id.item_refreah)
-        val back_draw = itemView.findViewById<ConstraintLayout>(R.id.back_drawable)
+        val back_image = itemView.findViewById<ImageView>(R.id.background_image)
 
         override fun onItemSelected() {
             //TODO COLOR CHANGED
@@ -83,15 +87,20 @@ var elements: MutableList<CameraData>): RecyclerView.Adapter<MainRecyclerAdapter
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        val df = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.ROOT)
+        val df = SimpleDateFormat("dd.MMM.yyyy HH:mm:ss", Locale.ROOT)
         val element = elements.get(position)
         holder.number.text = element.number
         holder.battery.text = element.battery
         holder.signal.text = element.signal
         holder.storage.text = element.storage+"%"
         holder.images.text = element.total_images.toString()
-        holder.last_photo.text = Date(element.last_photo).toString()
-        holder.last_update.text = Date(element.last_update).toString()
+        holder.last_photo.text = df.format(Date(element.last_photo))
+        holder.last_update.text = df.format(Date(element.last_update))
+        Glide.with(context!!)
+            .load(element.last_photo_uri)
+            .placeholder(R.drawable.ic_launcher_foreground)
+            .centerCrop()
+            .into(holder.back_image)
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {

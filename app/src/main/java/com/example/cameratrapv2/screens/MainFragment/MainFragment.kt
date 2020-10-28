@@ -15,6 +15,8 @@ import com.example.cameratrapv2.activity.MainActivity
 import com.example.cameratrapv2.models.CameraData
 import com.example.cameratrapv2.screens.MainFragment.Recycler.MainRecyclerAdapter
 import com.example.cameratrapv2.screens.MainFragment.TouchHelper.SimpleItemTouchHelperCallback
+import com.example.cameratrapv2.utils.READ_SMS
+import com.example.cameratrapv2.utils.checkPermissions
 import com.google.android.material.appbar.MaterialToolbar
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -41,7 +43,7 @@ class MainFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.action_about -> Log.i("MyTag","about")
-            R.id.action_cmd -> Log.i("MyTag","cmd")
+            R.id.action_cmd -> viewModel.runLoaderMmsData()
             R.id.action_map -> Log.i("MyTag","map")
             else -> Log.i("MyTag","Else"+item.itemId)
         }
@@ -53,6 +55,10 @@ class MainFragment : Fragment() {
         setHasOptionsMenu(true)
 
         viewModel =  ViewModelProvider(this).get(MainFragmentViewModel::class.java)
+        if(checkPermissions(READ_SMS)){
+            viewModel.runLoaderMmsData()
+        }
+
     }
 
 
@@ -66,7 +72,6 @@ class MainFragment : Fragment() {
         val callback = SimpleItemTouchHelperCallback(adapter)
         val touchHelper = ItemTouchHelper(callback)
         touchHelper.attachToRecyclerView(recycler)
-        //viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
         viewModel.allData.observe(this, Observer {
             adapter.setElemetList(it)
         })
@@ -80,9 +85,7 @@ class MainFragment : Fragment() {
 
     }
     fun deleteItem(camera: CameraData){
-        viewModel.let {
-            it.delete(camera)
-        }
+        viewModel.delete(camera)
     }
 
 

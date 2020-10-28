@@ -8,7 +8,10 @@ import androidx.core.content.ContextCompat
 
 
 const val SEND_SMS = Manifest.permission.SEND_SMS
+const val READ_SMS = Manifest.permission.READ_SMS
 const val RECEIVE_SMS = Manifest.permission.RECEIVE_SMS
+const val READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE
+
 
 
 const val PERMISSION_REQUEST = 200

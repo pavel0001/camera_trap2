@@ -2,6 +2,7 @@ package com.example.cameratrapv2.screens.CameraIndFragment
 
 import android.app.Application
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
@@ -10,6 +11,7 @@ import com.example.cameratrapv2.database.TotalRepository
 import com.example.cameratrapv2.models.CameraData
 import com.example.cameratrapv2.models.CommandData
 import com.example.cameratrapv2.models.LogsData
+import com.example.cameratrapv2.models.UriImgData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -21,6 +23,16 @@ class IndFragmentViewModel(application: Application): AndroidViewModel(applicati
 
     private val repository: TotalRepository = TotalRepository(TotalDatabase.getDatabase(application).dao())
     val logsLiveData = repository.getLogsData()
+
+
+    fun getUriImgListFromNumber(number: String): List<Uri> {
+        val listWithOnlyUri = mutableListOf<Uri>()
+        repository.getUriImgListFromNumber(number).forEach {
+            listWithOnlyUri.add(Uri.parse(it.uri_img))
+        }
+        return listWithOnlyUri
+    }
+    fun getUriImgLiveData(): LiveData<List<UriImgData>> = repository.getUriImgLiveData()
 
 
     fun updateCameraInfo(number: String, signal: String, battery: String, storage: String) = viewModelScope.launch(Dispatchers.IO){

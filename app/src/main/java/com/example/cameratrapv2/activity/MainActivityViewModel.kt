@@ -1,14 +1,17 @@
 package com.example.cameratrapv2.activity
 
 import android.app.Application
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.cameratrapv2.database.MmsLoader.Loader
 import com.example.cameratrapv2.database.TotalDatabase
 import com.example.cameratrapv2.database.TotalRepository
 import com.example.cameratrapv2.models.CameraData
 import com.example.cameratrapv2.models.CommandData
+import com.example.cameratrapv2.models.UriImgData
 import com.example.cameratrapv2.utils.APP_ACTIVITY
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,6 +20,7 @@ import java.util.regex.Pattern
 
 class MainActivityViewModel(application: Application): AndroidViewModel(application) {
     val repository = TotalRepository(TotalDatabase.getDatabase(application).dao())
+
 
 
         fun initializeCMD() = viewModelScope.launch(Dispatchers.IO) {
@@ -36,7 +40,7 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
             lateinit var camera: CameraData
             Log.i("MyTag","updateCameraInfo")
             Log.i("MyTag","number $number  signal $signal battery $battery storage $storage")
-                repository.getCameraNumbers().forEach {
+            repository.getCameraNumbers().forEach {
                     if(it.number.equals(number)){
                         camera = it
                     }
@@ -79,4 +83,10 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
             Log.i("MyTag", "This number don't exist in our db")
         }
     }
+
+
+
+
+
+
 }

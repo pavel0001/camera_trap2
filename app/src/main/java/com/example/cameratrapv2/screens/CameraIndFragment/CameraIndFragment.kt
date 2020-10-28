@@ -1,7 +1,8 @@
 package com.example.cameratrapv2.screens.CameraIndFragment
 
-import android.Manifest
+
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,36 +10,40 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.example.cameratrapv2.R
 import com.example.cameratrapv2.activity.MainActivity
-import com.example.cameratrapv2.utils.APP_ACTIVITY
-import com.example.cameratrapv2.utils.RECEIVE_SMS
-import com.example.cameratrapv2.utils.SEND_SMS
-import com.example.cameratrapv2.utils.checkPermissions
+import com.example.cameratrapv2.screens.CameraIndFragment.ViewPagerAdapter.ViewPagerAdapter
+import com.example.cameratrapv2.utils.*
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 
+
 class CameraIndFragment : Fragment(), View.OnClickListener {
     lateinit private var viewModel: IndFragmentViewModel
+    lateinit var  pagerAdapter: ViewPagerAdapter
     lateinit var trapNumber: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_camera_ind, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(this).get(IndFragmentViewModel::class.java)
+
 
         view.findViewById<MaterialButton>(R.id.button_pir).setOnClickListener(this)
         view.findViewById<MaterialButton>(R.id.button_get_photo).setOnClickListener(this)
@@ -52,15 +57,26 @@ class CameraIndFragment : Fragment(), View.OnClickListener {
         view.findViewById<MaterialButton>(R.id.button_progr_secend).setOnClickListener(this)
 
 
+        //val uriList = viewModel.getUriImgListFromNumber(trapNumber)
+        pagerAdapter = ViewPagerAdapter(requireActivity(), mutableListOf<Uri>())
 
+        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
+        val viewPager = view.findViewById<ViewPager2>(R.id.pager)
 
+        viewPager.adapter = pagerAdapter
 
+        val tabLayoutMediator = TabLayoutMediator(tabLayout,
+            viewPager,
+            TabLayoutMediator.TabConfigurationStrategy { tab: TabLayout.Tab, i: Int ->
+            tab.text = (i+1).toString()
 
+        })
+        tabLayoutMediator.attach()
 
         val number = view.findViewById<TextView>(R.id.number)
         trapNumber = arguments?.getString("number")!!
         number.text = trapNumber
-        viewModel = ViewModelProvider(this).get(IndFragmentViewModel::class.java)
+
     }
 
     override fun onStart() {
@@ -75,6 +91,19 @@ class CameraIndFragment : Fragment(), View.OnClickListener {
                 }
             }
 
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUriImgLiveData().observe(this, Observer {
+            val tmp_uri_list = mutableListOf<Uri>()
+            it.forEach {
+                if(it.number.equals(trapNumber)) {
+                    tmp_uri_list.add(Uri.parse(it.uri_img))
+                }
+            }
+            pagerAdapter.updateImages(tmp_uri_list)
         })
     }
 
@@ -115,7 +144,7 @@ class CameraIndFragment : Fragment(), View.OnClickListener {
 
                             R.id.button_delete -> Log.i("MyTag", "GET")// delete camera
 
-                            R.id.button_logs -> Log.i("MyTag", "GET") // show logs
+                            R.id.button_logs -> MyToast.succes(requireContext(), "uri list has ${pagerAdapter.itemCount} uri") // show logs
 
                             R.id.button_date -> sendCmd(6, trapNumber)
 

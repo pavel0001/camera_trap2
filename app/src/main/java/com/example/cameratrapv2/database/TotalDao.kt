@@ -16,11 +16,27 @@ interface TotalDao {
     @Query("DELETE FROM uri_data WHERE date_stamp < :date")
     fun deleteOldUriImg(date: Long)
 
-    @Query("SELECT * FROM uri_data")
-    fun getUriImg(): LiveData<List<UriImgData>>
+    @Query("SELECT * FROM uri_data ORDER BY date_stamp DESC")
+    fun getUriImgLiveData(): LiveData<List<UriImgData>>
+
+    @Query("SELECT * FROM uri_data WHERE number == :number")
+    fun getUriImgListFromNumber(number: String): List<UriImgData>
+
+    @Query("SELECT mms_id FROM uri_data")
+    fun getIdListFromUriData(): List<String>
+
+    @Insert(entity = UriImgData::class, onConflict = OnConflictStrategy.REPLACE)
+    fun insertUriImgDataFromList(data: List<UriImgData>)
 
     @Insert(entity = UriImgData::class, onConflict = OnConflictStrategy.REPLACE)
     fun insertUriImgData(data: UriImgData)
+
+    @Query("SELECT * FROM uri_data WHERE number == :number ORDER BY date_stamp DESC limit 1")
+    fun getLastUriDataFromNumber(number: String): UriImgData
+
+    @Query("SELECT COUNT(*) FROM uri_data WHERE number == :number ")
+    fun getHowMuchImagesHasCamera(number: String): Int
+
 
     //--------------LOGS
     @Query("SELECT * FROM logs_data")
@@ -50,6 +66,10 @@ interface TotalDao {
 
     @Update(entity = CameraData::class)
     suspend fun updateCameraData(camera: CameraData)
+
+    @Update(entity = CameraData::class)
+    suspend fun updateCameraDataFromList(camera: List<CameraData>)
+
 
     @Delete(entity = CameraData::class)
     suspend fun delete(camera: CameraData)

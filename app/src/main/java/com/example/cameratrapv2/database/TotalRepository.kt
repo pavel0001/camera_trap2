@@ -27,6 +27,9 @@ class TotalRepository(private val dao: TotalDao) {
     suspend fun updateCameraData(camera: CameraData){
         dao.updateCameraData(camera)
     }
+    suspend fun updateCameraDataFromList(camera: List<CameraData>){
+        dao.updateCameraDataFromList(camera)
+    }
     suspend fun deleteCamera(camera: CameraData){
         dao.delete(camera)
     }
@@ -41,11 +44,21 @@ class TotalRepository(private val dao: TotalDao) {
     suspend fun deleteOldUriImg(date: Long){
         dao.deleteOldUriImg(date)
     }
-    fun getUriImg(): LiveData<List<UriImgData>> = dao.getUriImg()
+    fun getUriImgLiveData(): LiveData<List<UriImgData>> = dao.getUriImgLiveData()
+
+    fun getUriImgListFromNumber(number: String): List<UriImgData> = dao.getUriImgListFromNumber(number)
+
+    fun getIdListFromUriData(): List<String> = dao.getIdListFromUriData()
 
     suspend fun insertUriImgData(data: UriImgData){
         dao.insertUriImgData(data)
     }
+    suspend fun insertUriImgDataFromList(data: List<UriImgData>) = dao.insertUriImgDataFromList(data)
+
+    fun getLastUriDataFromNumber(number: String): UriImgData = dao.getLastUriDataFromNumber(number)
+
+    fun getHowMuchImagesHasCamera(number: String): Int = dao.getHowMuchImagesHasCamera(number)
+
     //######################LOGS##############################
 
     fun getLogsData(): LiveData<List<LogsData>> = dao.getLogsData()

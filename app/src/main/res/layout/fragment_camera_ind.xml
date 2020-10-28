@@ -12,8 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_margin="5dp"
-        android:backgroundTintMode="multiply"
-        android:background="@drawable/photo_2020_10_02_12_58_47"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,12 +28,25 @@
         android:textSize="20sp"
         app:layout_constraintTop_toTopOf="parent"/>
 
+        <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+        app:tabIndicatorColor="@color/primaryColor"
+        app:tabMode="scrollable"
+        android:backgroundTint="@color/primaryLightLightColor"
+        app:tabSelectedTextColor="@color/primaryColorOff"
+        app:tabTextColor="@color/primaryColorOn"
+        app:layout_constraintTop_toBottomOf="@+id/pager"
+        app:layout_constraintStart_toStartOf="parent"/>
+
         <HorizontalScrollView
             android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pager"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
