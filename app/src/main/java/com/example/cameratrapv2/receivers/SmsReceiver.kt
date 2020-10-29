@@ -13,13 +13,11 @@ import com.example.cameratrapv2.utils.APP_ACTIVITY
 class SmsReceiver: BroadcastReceiver() {
     val SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED"
     override fun onReceive(context: Context?, intent: Intent?) {
-        Log.i("MyTag", "onReceived")
         if(intent != null && intent.action.equals(SMS_RECEIVED)) {
             var sms_from = ""
             var sms_body = ""
             for (message in getMessagesFromIntent(intent)) {
                 if (message == null) {
-                    Log.i("MyTag", "message is null")
                     break
                 }
                 sms_from = message.displayOriginatingAddress

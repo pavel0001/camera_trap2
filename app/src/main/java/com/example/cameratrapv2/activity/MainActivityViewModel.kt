@@ -61,9 +61,9 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
                 Pattern.CASE_INSENSITIVE
             )
             val matcher = pattern.matcher(textBody)
-            lateinit var signal: String
-            lateinit var battery: String
-            lateinit var storage: String
+            var signal: String = ""
+            var battery: String = ""
+            var storage: String = ""
 
             while (matcher.find()) {
                 if (matcher.group(1) != null && matcher.group(1).equals("signal", true)) {
@@ -77,7 +77,9 @@ class MainActivityViewModel(application: Application): AndroidViewModel(applicat
                     else ((a / b) * 100).toInt().toString()
                 }
             }
-            updateCameraInfo(number, signal, battery, storage) // update camera
+            if (!(storage.isEmpty() && signal.isEmpty() && battery.isEmpty())) { // chech what variables isn't empty
+                updateCameraInfo(number, signal, battery, storage) // update camera
+            }
         }
         else {
             Log.i("MyTag", "This number don't exist in our db")

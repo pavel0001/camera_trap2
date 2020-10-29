@@ -39,13 +39,13 @@ class MainFragmentViewModel(application: Application): AndroidViewModel(applicat
     fun runLoaderMmsData() = viewModelScope.launch(Dispatchers.IO){
         if(camera_list.isNotEmpty()) {
             val start = Date()
-            Log.i("MyTag", "Loader is running! time ${start.toString()}")
+            Log.i("MyTag", "Loader is running!")
             val idList = repository.getIdListFromUriData()
             Log.i("MyTag", "In base already exist ${idList.size} id ")
             val uriData = loaderRepository.getAllMmsData(idList)
             insertUriImgDataFromList(uriData)
-            val different = Date(Date().time - start.time)
-            Log.i("MyTag", "Loader is finishes! time ${different.toString()}")
+            val different = Date().time - start.time
+            Log.i("MyTag", "Loader is finishes! time $different ms.")
             updateCameraInfoAboutLastImage()
         }
     }
