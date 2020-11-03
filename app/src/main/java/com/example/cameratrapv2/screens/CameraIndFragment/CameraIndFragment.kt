@@ -1,6 +1,7 @@
 package com.example.cameratrapv2.screens.CameraIndFragment
 
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -115,7 +116,28 @@ class CameraIndFragment : Fragment(), View.OnClickListener {
                             R.id.button_get_photo -> sendCmd(2, trapNumber) // key = 2
 
                             R.id.button_gps ->
-                                (activity as MainActivity).navController.navigate(R.id.action_cameraIndFragment_to_getPosFragment) // open fragment with map
+                                if( ! viewModel.checkIfCameraHasCoord(trapNumber)) {
+                                    MaterialAlertDialogBuilder(
+                                        requireContext(),
+                                        R.style.ThemeOverlay_App_MaterialAlertDialog_negative
+                                    )
+                                        .setTitle(R.string.text_title_dialog_add_coord)
+                                        .setMessage(R.string.text_message_dialog_add_coord)
+                                        .setNegativeButton(R.string.button_dialog_add_number_cancel) { dialog, which -> }
+                                        .setPositiveButton(R.string.button_dialog_add_number_do) { dialog, which ->
+                                           val bundle = Bundle()
+                                            bundle.putBoolean(EXTRAS_ADD_ON_MAP,true)
+                                            bundle.putString(EXTRAS_OPEN_MAP_NUMBER, trapNumber)
+                                            (activity as MainActivity).navController.navigate(R.id.action_cameraIndFragment_to_getPosFragment, bundle)
+                                        }
+                                        .show()
+                                    }
+                                else{
+                                        val bundle = Bundle()
+                                        bundle.putBoolean(EXTRAS_ADD_ON_MAP,false)
+                                        bundle.putString(EXTRAS_OPEN_MAP_NUMBER, trapNumber)
+                                        (activity as MainActivity).navController.navigate(R.id.action_cameraIndFragment_to_getPosFragment, bundle)
+                                    }
 
                             R.id.button_add_contact ->
                                 MaterialAlertDialogBuilder(
@@ -140,7 +162,7 @@ class CameraIndFragment : Fragment(), View.OnClickListener {
                                     }
                                     .show()//show dialog with chose add or delete contact  key = 3(add) key=4(delete) only with param
 
-                            R.id.button_progr_first -> viewModel.updateCameraInfo(trapNumber,"3","5","97")//sendCmd(5, trapNumber)
+                            R.id.button_progr_first -> Log.i("MyTag", "GET")//sendCmd(5, trapNumber)
 
                             R.id.button_delete -> Log.i("MyTag", "GET")// delete camera
 

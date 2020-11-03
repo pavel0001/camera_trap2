@@ -20,6 +20,9 @@
             app:destination="@id/cameraIndFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_getPosFragment"
+            app:destination="@id/getPosFragment" />
     </fragment>
     <dialog
         android:id="@+id/cameraAddFragment"
@@ -35,7 +38,11 @@
         android:id="@+id/getPosFragment"
         android:name="com.example.cameratrapv2.screens.GetPosFragment.GetPosFragment"
         android:label="fragment_get_pos"
-        tools:layout="@layout/fragment_get_pos" />
+        tools:layout="@layout/fragment_get_pos" >
+        <action
+            android:id="@+id/action_getPosFragment_to_cameraIndFragment"
+            app:destination="@id/cameraIndFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cameraIndFragment"
         android:name="com.example.cameratrapv2.screens.CameraIndFragment.CameraIndFragment"

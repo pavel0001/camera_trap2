@@ -56,7 +56,7 @@ interface TotalDao {
     fun getCameraDataAll(): LiveData<List<CameraData>>
 
     @Query("SELECT * from camera_data")
-    fun getCameraData(): List<CameraData>
+    fun getCameraDataInList(): List<CameraData>
 
     @Query("SELECT * from camera_data WHERE number == :number")
     fun getCameraDataFromNumber(number: String): CameraData

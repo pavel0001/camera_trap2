@@ -33,7 +33,7 @@ class TotalRepository(private val dao: TotalDao) {
     suspend fun deleteCamera(camera: CameraData){
         dao.delete(camera)
     }
-    fun getCameraNumbers(): List<CameraData> = dao.getCameraData()
+    fun getCameraDataInList(): List<CameraData> = dao.getCameraDataInList()
     fun getCameraDataFromNumber(number: String) = dao.getCameraDataFromNumber(number)
 
     //######################URI##############################

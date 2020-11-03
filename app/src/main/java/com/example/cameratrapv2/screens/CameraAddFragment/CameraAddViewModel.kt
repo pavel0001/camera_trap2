@@ -1,10 +1,7 @@
 package com.example.cameratrapv2.screens.CameraAddFragment
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.cameratrapv2.database.TotalDatabase
 import com.example.cameratrapv2.database.TotalRepository
@@ -18,7 +15,7 @@ class CameraAddViewModel(application: Application): AndroidViewModel(application
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            number_list = repository.getCameraNumbers()
+            number_list = repository.getCameraDataInList()
         }
     }
 

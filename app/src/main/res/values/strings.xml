@@ -42,6 +42,11 @@
     <string name="button_dialog_add_number_do">Do it</string>
     <string name="text_message_dialog_send_sms">Will be send sms, it\'s can take some money</string>
     <string name="text_title_dialog_send_sms">Send command</string>
+    <string name="text_title_dialog_add_coord">Added coord</string>
+    <string name="text_message_dialog_add_coord">This camera hasn\'t coord. You want added it in camera\'s settings?</string>
+    <string name="switch_map_fragment_title">UnFreeze</string>
+    <string name="text_title_dialog_set_coord">Set position</string>
+    <string name="text_message_dialog_set_coord">You want change camera\'s position?</string>
 
 
 </resources>

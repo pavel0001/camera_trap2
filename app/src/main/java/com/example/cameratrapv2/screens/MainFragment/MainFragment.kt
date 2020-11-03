@@ -44,7 +44,8 @@ class MainFragment : Fragment() {
         when(item.itemId){
             R.id.action_about -> Log.i("MyTag","about")
             R.id.action_cmd -> viewModel.runLoaderMmsData()
-            R.id.action_map -> Log.i("MyTag","map")
+            R.id.action_map ->
+                (activity as MainActivity).navController.navigate(R.id.action_mainFragment_to_getPosFragment)
             else -> Log.i("MyTag","Else"+item.itemId)
         }
         return super.onOptionsItemSelected(item)

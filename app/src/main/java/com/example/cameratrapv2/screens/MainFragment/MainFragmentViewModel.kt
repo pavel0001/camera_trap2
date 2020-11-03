@@ -10,8 +10,6 @@ import com.example.cameratrapv2.database.TotalDatabase
 import com.example.cameratrapv2.database.TotalRepository
 import com.example.cameratrapv2.models.CameraData
 import com.example.cameratrapv2.models.UriImgData
-import com.example.cameratrapv2.utils.READ_SMS
-import com.example.cameratrapv2.utils.checkPermissions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
@@ -27,7 +25,7 @@ class MainFragmentViewModel(application: Application): AndroidViewModel(applicat
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            camera_list = repository.getCameraNumbers()
+            camera_list = repository.getCameraDataInList()
             val number_list = mutableListOf<String>()
             camera_list.forEach { number_list.add(it.number) }
             loaderRepository = LoaderRepository(application, number_list)

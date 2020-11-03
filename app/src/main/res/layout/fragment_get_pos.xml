@@ -3,24 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+    android:backgroundTint="@color/lightBack"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     tools:context=".screens.GetPosFragment.GetPosFragment">
-<com.jaredrummler.materialspinner.MaterialSpinner
-    android:id="@+id/spinner"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    map:layout_constraintTop_toTopOf="parent"
-    map:layout_constraintStart_toStartOf="parent"/>
+
+   <com.google.android.material.switchmaterial.SwitchMaterial
+
+       android:id="@+id/switch_add_or_not"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/switch_map_fragment_title"
+       android:layout_marginHorizontal="5dp"
+       map:layout_constraintStart_toStartOf="parent"
+       map:layout_constraintTop_toTopOf="parent"
+       map:layout_constraintBottom_toBottomOf="@id/spinner_map_select_camera"/>
+
+      <androidx.appcompat.widget.AppCompatSpinner
+       android:id="@+id/spinner_map_select_camera"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:minHeight="48dp"
+       map:layout_constraintTop_toTopOf="parent"
+       map:layout_constraintStart_toEndOf="@id/switch_add_or_not"
+       map:layout_constraintEnd_toEndOf="parent"/>
 
    <fragment
        android:id="@+id/fragment"
-       android:name="com.example.cameratrapv2.screens.MapsFragment"
+       android:name="com.google.android.gms.maps.SupportMapFragment"
        android:layout_width="match_parent"
        android:layout_height="0dp"
+       map:cameraZoom="8"
+       map:mapType="hybrid"
+       map:uiCompass="true"
+       map:cameraTargetLat="54"
+       map:cameraTargetLng="28"
+       map:uiZoomControls="true"
+       tools:context=".screens.GetPosFragment"
        map:layout_constraintBottom_toBottomOf="parent"
        map:layout_constraintEnd_toEndOf="parent"
        map:layout_constraintStart_toStartOf="parent"
-       map:layout_constraintTop_toBottomOf="@+id/spinner" />
+       map:layout_constraintTop_toBottomOf="@+id/spinner_map_select_camera" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
